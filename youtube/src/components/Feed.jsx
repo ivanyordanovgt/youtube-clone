@@ -6,10 +6,11 @@ import { fetchAPI } from '../utils/fetchAPI'
 function Feed() {
   
   const [selectedCategory, setSelectedCategory] = useState('New'); 
-
+  const [videos, setVideos] = useState([])
 
   useEffect(() => {
     fetchAPI(`search?part=snippet&q=${selectedCategory}`)
+    .then((data) => {setVideos(data.items)})
   }, [selectedCategory])
 
   
@@ -28,7 +29,7 @@ function Feed() {
           <Typography variant='h4' fontWeight='bold' mb={2} sx={{color: 'white'}}>
             {selectedCategory} <span style={{color: '#31503'}}>Videos</span>
           </Typography>
-          <Videos videos={[]}/>
+          <Videos videos={videos}/>
           
         </Box>
         
