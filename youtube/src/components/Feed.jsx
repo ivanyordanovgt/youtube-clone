@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {Box, Stack, Typography} from "@mui/material"
-import SideBar from './SideBar'
+import {SideBar, Videos} from './'
 function Feed() {
   return (
     <Stack sx={{flexDirection: {sx: "column", md: "row"}}}>
@@ -18,7 +18,7 @@ function Feed() {
           <Typography variant='h4' fontWeight='bold' mb={2} sx={{color: 'white'}}>
             New <span style={{color: '#31503'}}>Videos</span>
           </Typography>
-
+          <Videos videos={[]}/>
           
         </Box>
         
