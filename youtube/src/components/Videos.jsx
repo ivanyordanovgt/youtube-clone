@@ -1,5 +1,7 @@
-import { Stack } from '@mui/system'
+import { Stack, Box } from '@mui/system'
 import React from 'react'
+import ChannelCard from './ChannelCard'
+import VideoCard from './VideoCard'
 
 const Videos = ({videos}) => {
 
@@ -7,8 +9,9 @@ const Videos = ({videos}) => {
   return (
     <Stack direction="row" flexWrap="wrap" justifyContent="start" gap={2}> 
         {videos.map((item, index) => {
-            <Box key={index}>
+            return <Box key={index}>
                 {item.id.videoId && <VideoCard video={item}/>}
+                {item.id.channelId && <ChannelCard channelDetail={item}/>}
             </Box>
         })}
     </Stack>
