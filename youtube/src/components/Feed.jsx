@@ -2,7 +2,13 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import {Box, Stack, Typography} from "@mui/material"
 import {SideBar, Videos} from './'
+import { fetchAPI } from '../utils/fetchAPI'
 function Feed() {
+  
+  useEffect(() => {
+    fetchAPI(`search?part=snippet&q=${selectedCategory}`)
+  })
+  
   return (
     <Stack sx={{flexDirection: {sx: "column", md: "row"}}}>
       <Box sx={{
