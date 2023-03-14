@@ -22,8 +22,14 @@ function ChannelDetail() {
         <div style={{
           background: 'linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(180,58,179,1) 49%, rgba(85,25,25,1) 100%)', 
           zIndex: 10, height: '300px'}}>HAHAHA</div>
+        <ChannelCard channelDetail={channelDetail} marginTop='-93px'></ChannelCard>
       </Box>
-      <ChannelCard channelDetail={channelDetail} marginTop='-93px'></ChannelCard>
+
+      <Box display="flex" p="2">
+        <Box sx={{mr: {sm: '100px'}}}/>
+        <Videos videos={videos}></Videos>
+
+      </Box>
     </Box>
     
   )
