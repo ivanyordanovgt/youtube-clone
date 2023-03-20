@@ -15,7 +15,8 @@ const VideoDetail = () => {
     .then((data) => setVideoDetail(data.items[0]))
   }, [id])
 
-  const videoData = videoDetail?.snippet
+  if (!videoDetail?.snippet) return <h1>Loading</h1>
+  const {snippet: {title, channelId, channelTitle}, statistics: {viewCount, likeCount}} = videoDetail
 
   return (
     <Box minHeight="95vh">
@@ -26,8 +27,8 @@ const VideoDetail = () => {
             <Typography color="#fff" variant='h5' fontWeight="bold" p={2}>
             </Typography>
             <Stack direction='row' justifyContent="space-between" sx={{color: '#fff'}} py={1} px={2}>
-              <Link to={`/channel/${videoData.channelId}`}>
-                <Typography>{videoData.channelTitle}</Typography>
+              <Link to={`/channel/${channelId}`}>
+                <Typography>{channelTitle}</Typography>
               </Link>
             </Stack>
           </Box>
