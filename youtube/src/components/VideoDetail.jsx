@@ -50,9 +50,10 @@ const VideoDetail = () => {
           </Box>
         </Box>
       </Stack>
-      <Videos videos={relatedVideos}/>
 
       <Box px={2} py={{md: 1, xs: 5}} justifyContent="center" alignItems="center">
+        <Videos videos={relatedVideos} direction="column"/>
+
       </Box>
     </Box>
   )
