@@ -32,6 +32,11 @@ const VideoDetail = () => {
                 <CheckCircle sx={{fontSize: '12px', color: 'gray', ml: '5px'}}></CheckCircle>
               </Link>
             </Stack>
+            <Stack>
+              <Typography variant='body1' sx={{opacity: 0.7, color: '#fff'}}>
+                {parseInt(viewCount).toLocaleString()} views
+              </Typography>
+            </Stack>
           </Box>
         </Box>
       </Stack>
