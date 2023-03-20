@@ -25,7 +25,7 @@ const VideoDetail = () => {
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls/>
             <Typography color="#fff" variant='h5' fontWeight="bold" p={2}>
             </Typography>
-            <Stack >
+            <Stack direction='row' justifyContent="space-between" sx={{color: '#fff'}} py={1} px={2}>
               <Link to={`/channel/${videoData.channelId}`}>
                 <Typography>{videoData.channelTitle}</Typography>
               </Link>
