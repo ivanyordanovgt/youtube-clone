@@ -10,9 +10,14 @@ const VideoDetail = () => {
 
   const {id} = useParams();
   const [videoDetail, setVideoDetail] = useState(null)
+  const [Videos, setVideos] = useState(null)
   useEffect(() => {
     fetchAPI(`videos?part=snippet,statistics&id=${id}`)
     .then((data) => setVideoDetail(data.items[0]))
+
+    fetchAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
+      (data) => setVideos(data.items)
+    )
   }, [id])
 
   if (!videoDetail?.snippet) return <h1>Loading</h1>
