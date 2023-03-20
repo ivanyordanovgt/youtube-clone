@@ -4,19 +4,20 @@ import { Link, useParams } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import { Typography, Box, Stack } from '@mui/material'
 import { CheckCircle } from '@mui/icons-material'
-import Video from './Video'
+import {Videos} from './'
 import { fetchAPI } from '../utils/fetchAPI'
+import './Videos'
 const VideoDetail = () => {
 
   const {id} = useParams();
   const [videoDetail, setVideoDetail] = useState(null)
-  const [Videos, setVideos] = useState(null)
+  const [relatedVideos, setRelatedVideos] = useState(null)
   useEffect(() => {
     fetchAPI(`videos?part=snippet,statistics&id=${id}`)
     .then((data) => setVideoDetail(data.items[0]))
 
     fetchAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
-      (data) => setVideos(data.items)
+      (data) => setRelatedVideos(data.items)
     )
   }, [id])
 
@@ -49,6 +50,10 @@ const VideoDetail = () => {
           </Box>
         </Box>
       </Stack>
+      <Videos videos={relatedVideos}/>
+
+      <Box px={2} py={{md: 1, xs: 5}} justifyContent="center" alignItems="center">
+      </Box>
     </Box>
   )
 }
