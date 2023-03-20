@@ -7,6 +7,14 @@ import { CheckCircle } from '@mui/icons-material'
 import Video from './Video'
 import { fetchAPI } from '../utils/fetchAPI'
 const VideoDetail = () => {
+
+  const {id} = useParams();
+  const [videoDetail, setVideoDetail] = useState(null)
+  useEffect(() => {
+    fetchAPI(`videos?part=snippet,statistics&id=${id}`)
+    .then((data) => setVideoDetail(data.items[0]))
+  }, [id])
+
   return (
     <Box minHeight="95vh">
       <Stack direction={{xs: 'column', md: 'row'}}>
