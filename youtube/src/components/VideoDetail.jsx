@@ -15,7 +15,7 @@ const VideoDetail = () => {
     .then((data) => setVideoDetail(data.items[0]))
   }, [id])
 
-  const { snippet } = videoDetail
+  const videoData = videoDetail?.snippet
 
   return (
     <Box minHeight="95vh">
@@ -24,7 +24,7 @@ const VideoDetail = () => {
           <Box sx={{width: '100%', position: 'sticky', top: '86px'}}>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls/>
             <Typography color="#fff" variant='h5' fontWeight="bold" p={2}>
-              {snippet?.title}
+              {videoData?.title}
             </Typography>
           </Box>
         </Box>
