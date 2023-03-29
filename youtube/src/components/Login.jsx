@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { TextField, Box } from '@mui/material'
+import { TextField, Box, Button } from '@mui/material'
 const Login = () => {
     console.log('register!  ')
     const [formValues, setFormValues] = useState({
@@ -8,6 +8,11 @@ const Login = () => {
     })
     const onSubmit = () => {
 
+    }
+
+    const onChangeHandler = (e) => {
+        setFormValues(state => ({...state, [e.target.name]: [e.target.value]}))
+        console.log(e.target.value)
     }
     
   return (
@@ -20,9 +25,9 @@ const Login = () => {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <TextField id="filled-basic" label="Filled" variant="filled" />
-      <TextField id="standard-basic" label="Standard" variant="standard" />
+      <TextField onChange={onChangeHandler} label="Email" variant="filled" name="email" value={formValues.email}/>
+      <TextField onChange={onChangeHandler} label="Password" variant="filled" name="password" value={formValues.password}/>
+      <Button variant="outlined" style={{width: '7vw'}}>Register</Button>
     </Box>
     </div>
   )
