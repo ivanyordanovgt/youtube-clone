@@ -5,6 +5,11 @@ export class authAPI {
     url = 'http://127.0.0.1:8000/api/'
   
     post(apiUrl, data) {
+        const result = axios({
+            method: 'post',
+            url: this.url + apiUrl,
+            data: data
+          });
     }
     
     put(apiUrl, data) {
