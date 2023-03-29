@@ -3,10 +3,11 @@ import { TextField, Box, Button } from '@mui/material'
 import { authAPI } from '../apis/authAPI'
 import { useForm } from '../hooks/useForm'
 const Register = () => {
-    const [formValues, onChangeHandler, onSubmit] = useForm({
+    const {formValues, onChangeHandler} = useForm({
         'email': '',
         'password': '',
-    }, onSubmitHandler)
+    })
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
         if (formValues.email && formValues.password) {
