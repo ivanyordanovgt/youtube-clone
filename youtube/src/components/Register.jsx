@@ -1,25 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Box, Button } from '@mui/material'
 import { authAPI } from '../apis/authAPI'
-
+import { useForm } from '../hooks/useForm'
 const Register = () => {
-    console.log('register!  ')
-    const [formValues, setFormValues] = useState({
+    const [formValues, onChangeHandler, onSubmit] = useForm({
         'email': '',
         'password': '',
-    })
+    }, onSubmitHandler)
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log("register")
         if (formValues.email && formValues.password) {
             authAPI.post('register', formValues)
         } else alert('no no')
 
-    }
-
-    const onChangeHandler = (e) => {
-        setFormValues(state => ({...state, [e.target.name]: e.target.value}));
-        console.log(e.target.value)
     }
     
   return (
