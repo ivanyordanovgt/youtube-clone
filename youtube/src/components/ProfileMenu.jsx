@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 
-export default function ProfileMenu() {
+export default function ProfileMenu({isLoggedIn}) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -44,7 +44,7 @@ export default function ProfileMenu() {
   }, [open]);
 
   return (
-    <Stack>
+    <Stack direction="row" spacing={2}>
       <div>
         <Button
           ref={anchorRef}
@@ -54,7 +54,7 @@ export default function ProfileMenu() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          Dashboard
+          PROFILE
         </Button>
         <Popper
           open={open}

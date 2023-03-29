@@ -3,7 +3,9 @@ import {Stack} from '@mui/material'
 import {Link} from 'react-router-dom'
 import { logo } from '../utils/contants'
 import { SearchBar } from './searchBar'
+import ProfileMenu from './ProfileMenu'
 const Navbar = () => {
+  const isLoggedIn = false;
   return (
     <div>
         {/* direction row because nav bar needs to be a row, p is padding */}
@@ -19,6 +21,7 @@ const Navbar = () => {
           </Link>
 
           <SearchBar></SearchBar>
+          <ProfileMenu isLoggedIn={isLoggedIn}></ProfileMenu>
         </Stack>
     </div>
   )
