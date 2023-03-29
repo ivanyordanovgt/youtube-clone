@@ -5,7 +5,7 @@ import { logo } from '../utils/contants'
 import { SearchBar } from './searchBar'
 import ProfileMenu from './ProfileMenu'
 const Navbar = () => {
-  const [isLoggedIn, setisLoggedIn] = useState(false)
+  const [isLoggedIn, setisLoggedIn] = useState(true)
   return (
     <div>
         {/* direction row because nav bar needs to be a row, p is padding */}

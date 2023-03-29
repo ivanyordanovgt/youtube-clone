@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {Box} from '@mui/material'
 import {Navbar, Feed, ChannelDetail, SearchFeed, VideoDetail} from './components'
+import Login from './components/Login'
 const App = () => {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ const App = () => {
             <Route path='/video/:id' element={<VideoDetail/>}/>
             <Route path='/channel/:id' element={<ChannelDetail/>}/>
             <Route path='/search/:searchParam' element={<SearchFeed/>}/>
+            <Route path='/register' element={<Login></Login>}/>
             </Routes>
         </Box>
     </BrowserRouter>

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { TextField, Box } from '@mui/material'
 const Login = () => {
-
-    const [formValues, setFormValues] = useEffect({
+    console.log('register!  ')
+    const [formValues, setFormValues] = useState({
         'email': '',
         'password': '',
     })
@@ -11,7 +11,7 @@ const Login = () => {
     }
     
   return (
-    <div>
+    <div style={{backgroundColor: 'white', marginTop: '20vh'}}>
            <Box
       component="form"
       sx={{
