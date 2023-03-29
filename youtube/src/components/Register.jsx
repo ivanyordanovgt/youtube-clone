@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { TextField, Box, Button } from '@mui/material'
 import { authAPI } from '../apis/authAPI'
 
-const Login = () => {
+const Register = () => {
     console.log('register!  ')
     const [formValues, setFormValues] = useState({
         'email': '',
@@ -43,4 +43,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
