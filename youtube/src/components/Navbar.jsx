@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Stack} from '@mui/material'
 import {Link} from 'react-router-dom'
 import { logo } from '../utils/contants'
 import { SearchBar } from './searchBar'
 import ProfileMenu from './ProfileMenu'
 const Navbar = () => {
-  const isLoggedIn = false;
+  const [isLoggedIn, setisLoggedIn] = useState(false)
   return (
     <div>
         {/* direction row because nav bar needs to be a row, p is padding */}

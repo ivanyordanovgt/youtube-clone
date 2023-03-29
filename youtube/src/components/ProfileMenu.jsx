@@ -7,6 +7,7 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
+import ProfileMenuItems from './ProfileMenuItems';
 
 export default function ProfileMenu({isLoggedIn}) {
   const [open, setOpen] = React.useState(false);
@@ -80,9 +81,9 @@ export default function ProfileMenu({isLoggedIn}) {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    {isLoggedIn  
+                    ?<ProfileMenuItems options={[{name: 'Profile'}, {name: 'Logout'}]}></ProfileMenuItems>
+                    :<ProfileMenuItems options={[{name: 'Login'}, {name: 'Register'}]}></ProfileMenuItems>}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
