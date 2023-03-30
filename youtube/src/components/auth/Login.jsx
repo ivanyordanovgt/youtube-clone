@@ -5,12 +5,15 @@ import { authAPI } from '../../apis/authAPI'
 import { useForm } from '../../hooks/useForm'
 import { useCookies } from 'react-cookie'
 import { LoggedInContext } from '../../context/LoggedInContext'
-
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+    const navigate = useNavigate();
     const {formValues, onChangeHandler} = useForm({
         'email': '',
         'password': '',
     })
+
+    const {error, setError} = useState(false)
 
     const {setIsLoggedIn} = useContext(LoggedInContext);
 
@@ -18,8 +21,10 @@ const Login = () => {
         e.preventDefault();
         authAPI.login(formValues).then(data => {
           setIsLoggedIn(true)
+          setError(false)
+          navigate('/')
         })
-   
+        setError(true)
     }
     
   return (
@@ -35,8 +40,8 @@ const Login = () => {
       autoComplete="off"
     >
     
-      <TextField onChange={onChangeHandler} label="Email" variant="filled" name="email" value={formValues.email}/>
-      <TextField onChange={onChangeHandler} label="Password" variant="filled" name="password" value={formValues.password}/>
+      <TextField error={error} onChange={onChangeHandler} label="Email" variant="filled" name="email" value={formValues.email}/>
+      <TextField error={error} onChange={onChangeHandler} label="Password" variant="filled" name="password" value={formValues.password}/>
       <Button variant="outlined" type='submit' style={{width: '7vw'}}>Login</Button>
     </Box>
     </div>

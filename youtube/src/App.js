@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 import {Box} from '@mui/material'
 import {Navbar, Feed, ChannelDetail, SearchFeed, VideoDetail} from './components'
 import Register from './components/auth/Register'
@@ -9,7 +9,6 @@ import { LoggedInContext } from './context/LoggedInContext'
 import { axiosClient } from './apis/axiosClient'
 import Logout from './components/auth/Logout'
 const App = () => {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
