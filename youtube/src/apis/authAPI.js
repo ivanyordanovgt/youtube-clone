@@ -10,7 +10,7 @@ export const authAPI = {
 
     login(data) {
         if (data.email && data.password) {
-            return axiosClient.post('login', data)
+            try {return axiosClient.post('login', data)} catch(err) {return false}
         } else alert('no no')
     },
 
