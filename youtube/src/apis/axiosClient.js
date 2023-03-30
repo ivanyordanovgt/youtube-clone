@@ -21,7 +21,8 @@ export const axiosClient = {
     get(apiUrl) {
       const response = axios({
         method: 'get',
-        url: this.url + apiUrl
+        url: this.url + apiUrl,
+        withCredentials: true,
       })
       return response
     },

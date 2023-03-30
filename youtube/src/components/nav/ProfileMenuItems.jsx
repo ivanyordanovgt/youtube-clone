@@ -1,9 +1,14 @@
 import React from 'react'
 import { MenuItem } from '@mui/material'
 import { Link } from 'react-router-dom'
+import { authAPI } from '../../apis/authAPI'
 
 const ProfileMenuItems = ({options}) => {
     console.log(options)
+
+    const isLoggedIn = () => {
+      authAPI.isLoggedIn().then(data => console.log(data))
+    }
   return (
     <div>
     {options.map((option, index) => {
@@ -11,7 +16,9 @@ const ProfileMenuItems = ({options}) => {
         return <MenuItem>
         <Link to={option.linkTo} style={{'display': 'flex', alignItems: 'center'}}>
         {option.name}
-        </Link></MenuItem>
+        </Link>
+        <button onClick={isLoggedIn}></button>
+        </MenuItem>
     })}
     </div>
   )

@@ -14,8 +14,12 @@ export const authAPI = {
         } else alert('no no')
     },
 
-    isLoggedIn() {
-        const response = axiosClient.get('user')
-        return response
+    async isLoggedIn() {
+        try {
+            await axiosClient.get('user')
+            return true
+        } catch(err) {
+            return err.message
+        }
     }
 }
