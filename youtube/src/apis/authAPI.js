@@ -4,7 +4,7 @@ export const authAPI = {
 
     register(data) {
         if (data.email && data.password) {
-            axiosClient.post('register', data)
+            try{return axiosClient.post('register', data)} catch(err) {return false}
         } else alert('no no')
     },
 

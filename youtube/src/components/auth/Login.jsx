@@ -35,12 +35,12 @@ const Login = () => {
     
   return (
     <div style={{backgroundColor: 'white', marginTop: '20vh'}}>
-    
+    <div style={{height: '.1vh'}}></div>
     <Box
       component="form"
       onSubmit={onSubmitHandler}
       sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
+        '& > :not(style)': { m: 1, width: '25ch' }
       }}
       noValidate
       autoComplete="off"
@@ -106,7 +106,7 @@ const Login = () => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
