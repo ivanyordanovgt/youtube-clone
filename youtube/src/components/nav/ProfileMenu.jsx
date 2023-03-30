@@ -9,10 +9,15 @@ import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import ProfileMenuItems from './ProfileMenuItems';
 import { Link } from 'react-router-dom';
+import { LoggedInContext } from '../../context/LoggedInContext';
 
-export default function ProfileMenu({isLoggedIn}) {
+export default function ProfileMenu() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+  const isLoggedIn = React.useContext(LoggedInContext)
+  console.log(isLoggedIn, 'login???')
+  
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -25,6 +30,7 @@ export default function ProfileMenu({isLoggedIn}) {
 
     setOpen(false);
   };
+
 
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
@@ -102,9 +108,9 @@ export default function ProfileMenu({isLoggedIn}) {
                     onKeyDown={handleListKeyDown}
                   >
                     {isLoggedIn  
-                    ?
-                    <ProfileMenuItems options={[menuOptions.login, menuOptions.register]}></ProfileMenuItems>
-                    :<ProfileMenuItems options={[menuOptions.profile, menuOptions.logout]}></ProfileMenuItems>}
+                    ?<ProfileMenuItems options={[menuOptions.profile, menuOptions.logout]}></ProfileMenuItems>
+                    
+                    :<ProfileMenuItems options={[menuOptions.login, menuOptions.register]}></ProfileMenuItems>}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

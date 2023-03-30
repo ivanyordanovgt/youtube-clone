@@ -15,11 +15,18 @@ export const authAPI = {
     },
 
     async isLoggedIn() {
-        try {
-            await axiosClient.get('user')
-            return true
+        try { 
+            const res = await axiosClient.get('user');
+            console.log(res.data.data)
+            if (res.data.data.id) {
+                return true;
+            }
         } catch(err) {
-            return err.message
+            return false
         }
+    },
+
+    async getUser(id) {
+        
     }
 }
