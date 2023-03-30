@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import { TextField, Box, Button } from '@mui/material'
 import { authAPI } from '../../apis/authAPI'
 import { useForm } from '../../hooks/useForm'
 import { useCookies } from 'react-cookie'
+import { LoggedInContext } from '../../context/LoggedInContext'
+
 const Login = () => {
     const {formValues, onChangeHandler} = useForm({
         'email': '',
         'password': '',
     })
 
-    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+    const {setIsLoggedIn} = useContext(LoggedInContext);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        const response = authAPI.login(formValues).then(data => console.log(data.data))
-        // console.log(authAPI.isLoggedIn(), '???')
-
+        authAPI.login(formValues).then(data => {
+          setIsLoggedIn(true)
+        })
+   
     }
     
   return (

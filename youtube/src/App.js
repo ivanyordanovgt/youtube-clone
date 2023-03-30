@@ -27,6 +27,8 @@ const App = () => {
             <Navbar/>
             <Routes>
             <Route path='/logout' element={<Logout/>}/>
+            <Route path='/register' element={<Register></Register>}/>
+            <Route path='/login' element={<Login></Login>}/>
             </Routes>
             </LoggedInContext.Provider>
             <Routes>
@@ -34,8 +36,7 @@ const App = () => {
             <Route path='/video/:id' element={<VideoDetail/>}/>
             <Route path='/channel/:id' element={<ChannelDetail/>}/>
             <Route path='/search/:searchParam' element={<SearchFeed/>}/>
-            <Route path='/register' element={<Register></Register>}/>
-            <Route path='/login' element={<Login></Login>}/>
+
             </Routes>
         </Box>
     </BrowserRouter>
