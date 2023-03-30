@@ -10,7 +10,12 @@ export const authAPI = {
 
     login(data) {
         if (data.email && data.password) {
-            axiosClient.post('login', data)
+            return axiosClient.post('login', data)
         } else alert('no no')
+    },
+
+    isLoggedIn() {
+        const response = axiosClient.get('user')
+        return response
     }
 }
