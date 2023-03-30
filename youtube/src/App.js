@@ -22,7 +22,7 @@ const App = () => {
 
     <BrowserRouter>
         <Box sx={{backgroundColor: '#000'}}>
-            <LoggedInContext.Provider value={isLoggedIn}> 
+            <LoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}> 
             <Navbar/>
             
             </LoggedInContext.Provider>

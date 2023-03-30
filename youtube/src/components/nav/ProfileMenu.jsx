@@ -15,8 +15,7 @@ export default function ProfileMenu() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
-  const isLoggedIn = React.useContext(LoggedInContext)
-  console.log(isLoggedIn, 'login???')
+  const {isLoggedIn} = React.useContext(LoggedInContext)
   
 
   const handleToggle = () => {
