@@ -3,6 +3,7 @@ import { axiosClient } from "./axiosClient"
 export const authAPI = {
 
     register(data) {
+
         if (data.email && data.password) {
             try{return axiosClient.post('register', data)} catch(err) {return false}
         } else alert('no no')
