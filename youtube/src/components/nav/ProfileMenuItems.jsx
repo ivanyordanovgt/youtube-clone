@@ -10,7 +10,6 @@ const ProfileMenuItems = ({options}) => {
   return (
     <div>
     {options.map((option, index) => {
-        console.log(option, 'option!!!!')
         return <MenuItem>
         <Link to={option.linkTo} style={{'display': 'flex', alignItems: 'center'}}>
         {option.name}

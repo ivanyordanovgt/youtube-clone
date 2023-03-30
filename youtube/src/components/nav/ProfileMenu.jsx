@@ -14,7 +14,7 @@ import { LoggedInContext } from '../../context/LoggedInContext';
 export default function ProfileMenu() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-
+  
   const {isLoggedIn} = React.useContext(LoggedInContext)
   
 
@@ -107,7 +107,9 @@ export default function ProfileMenu() {
                     onKeyDown={handleListKeyDown}
                   >
                     {isLoggedIn  
-                    ?<ProfileMenuItems options={[menuOptions.profile, menuOptions.logout]}></ProfileMenuItems>
+                    ?<div>
+                      <ProfileMenuItems options={[menuOptions.profile, menuOptions.logout]}></ProfileMenuItems>
+                    </div>
                     
                     :<ProfileMenuItems options={[menuOptions.login, menuOptions.register]}></ProfileMenuItems>}
                   </MenuList>

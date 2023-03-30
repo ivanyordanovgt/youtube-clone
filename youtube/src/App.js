@@ -7,6 +7,7 @@ import Login from './components/auth/Login'
 import { authAPI } from './apis/authAPI'
 import { LoggedInContext } from './context/LoggedInContext'
 import { axiosClient } from './apis/axiosClient'
+import Logout from './components/auth/Logout'
 const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,7 +25,9 @@ const App = () => {
         <Box sx={{backgroundColor: '#000'}}>
             <LoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}> 
             <Navbar/>
-            
+            <Routes>
+            <Route path='/logout' element={<Logout/>}/>
+            </Routes>
             </LoggedInContext.Provider>
             <Routes>
             <Route path='/' exact element={<Feed/>}/>
