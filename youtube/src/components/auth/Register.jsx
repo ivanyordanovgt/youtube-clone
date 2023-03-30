@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Box, Button } from '@mui/material'
-import { authAPI } from '../../apis/axiosClient'
+import { authAPI } from '../../apis/authAPI'
 import { useForm } from '../../hooks/useForm'
 const Register = () => {
     const {formValues, onChangeHandler} = useForm({
@@ -10,9 +10,7 @@ const Register = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        if (formValues.email && formValues.password) {
-            authAPI.post('register', formValues)
-        } else alert('no no')
+        authAPI.register(formValues)
 
     }
     

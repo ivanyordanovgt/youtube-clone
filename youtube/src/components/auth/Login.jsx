@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { TextField, Box, Button } from '@mui/material'
-import { authAPI } from '../../apis/axiosClient'
+import { authAPI } from '../../apis/authAPI'
 import { useForm } from '../../hooks/useForm'
 const Login = () => {
     const {formValues, onChangeHandler} = useForm({
@@ -11,9 +11,7 @@ const Login = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        if (formValues.email && formValues.password) {
-            const response = authAPI.post('login', formValues);
-        } else alert('no no')
+        authAPI.login(formValues)
 
     }
     
