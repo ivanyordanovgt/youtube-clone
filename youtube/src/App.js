@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {Box} from '@mui/material'
 import {Navbar, Feed, ChannelDetail, SearchFeed, VideoDetail} from './components'
-import Register from './components/Register'
+import Register from './components/auth/Register'
 const App = () => {
   return (
     <BrowserRouter>

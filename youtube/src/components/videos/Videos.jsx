@@ -1,6 +1,6 @@
 import { Stack, Box } from '@mui/system'
 import React from 'react'
-import ChannelCard from './ChannelCard'
+import ChannelCard from '../channel/ChannelCard'
 import VideoCard from './VideoCard'
 
 const Videos = ({ videos, direction }) => {

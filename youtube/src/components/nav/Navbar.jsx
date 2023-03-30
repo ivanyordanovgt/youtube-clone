@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {Stack} from '@mui/material'
 import {Link} from 'react-router-dom'
-import { logo } from '../utils/contants'
+import { logo } from '../../utils/contants'
 import { SearchBar } from './searchBar'
 import ProfileMenu from './ProfileMenu'
 const Navbar = () => {

@@ -3,7 +3,7 @@ import {Box, CardContent, CardMedia, Typography} from "@mui/material"
 import { CheckCircle } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
-import { demoProfilePicture } from '../utils/contants'
+import { demoProfilePicture } from '../../utils/contants'
 const ChannelCard = ({ channelDetail, marginTop }) => {
   return (
     <Box
