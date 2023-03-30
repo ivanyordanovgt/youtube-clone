@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { TextField, Box, Button } from '@mui/material'
-import { authAPI } from '../../apis/authAPI'
+import { authAPI } from '../../apis/axiosClient'
 import { useForm } from '../../hooks/useForm'
 const Login = () => {
     const {formValues, onChangeHandler} = useForm({
