@@ -15,6 +15,8 @@ export const authValidator = {
 
         if (pass.length < 8) unmetRequirements.push('Password must cointain 8 characters');
         if (isNumeric(pass)) unmetRequirements.push('Password must have letters');
+
+        return unmetRequirements
         
     }
 
