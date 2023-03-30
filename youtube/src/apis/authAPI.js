@@ -28,5 +28,9 @@ export const authAPI = {
 
     async getUser(id) {
         
+    },
+
+    async logout() {
+        axiosClient.post('logout')
     }
 }
