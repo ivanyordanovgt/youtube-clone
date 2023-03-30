@@ -34,14 +34,33 @@ export default function ProfileMenu({isLoggedIn}) {
       setOpen(false);
     }
   }
-
-  // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
+
+  const menuOptions = {
+    'login': {
+      'name': 'login',
+      'linkTo': '/login'
+    },
+
+    'register': {
+      'name': 'register',
+      'linkTo': '/register'
+    },
+
+    'logout': {
+      'name': 'logout',
+      'linkTo': '/logout'
+    },
+
+    'profile': {
+      'name': 'profile',
+      'linkTo': 'user/profile'
+    }
+  }
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
-
     prevOpen.current = open;
   }, [open]);
 
@@ -83,10 +102,9 @@ export default function ProfileMenu({isLoggedIn}) {
                     onKeyDown={handleListKeyDown}
                   >
                     {isLoggedIn  
-                    ?<Link to="/register" style={{'display': 'flex', alignItems: 'center'}}>
-                    <ProfileMenuItems options={[{name: 'Profile'}, {name: 'Logout'}]}></ProfileMenuItems>
-                  </Link>
-                    :<ProfileMenuItems options={[{name: 'Login'}, {name: 'Register'}]}></ProfileMenuItems>}
+                    ?
+                    <ProfileMenuItems options={[menuOptions.login, menuOptions.register]}></ProfileMenuItems>
+                    :<ProfileMenuItems options={[menuOptions.profile, menuOptions.logout]}></ProfileMenuItems>}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
