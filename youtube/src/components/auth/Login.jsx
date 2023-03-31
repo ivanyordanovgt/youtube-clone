@@ -24,7 +24,7 @@ const Login = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        setCount(true)
+        
         authAPI.login(formValues).then(data => {
           setIsLoggedIn(true)
           console.log(data, '???')

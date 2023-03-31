@@ -24,10 +24,13 @@ const Register = () => {
   const onSubmitHandler = (e) => {
       e.preventDefault();
       setFormError(true)
-      authAPI.register(formValues).then(d => {
-        navigate('/login')
-      })
-
+      const res = authAPI.register(formValues)
+      console.log('res???', res)
+      if (res) {
+        res.then(d => {
+          navigate('/login')
+        })
+      }
     }
     
   return (

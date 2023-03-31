@@ -1,10 +1,13 @@
 import { axiosClient } from "./axiosClient"
-
+import { authValidator as validate } from "../validators/authValidator"
 export const authAPI = {
 
     register(data) {
-
-        try{return axiosClient.post('register', data)} catch(err) {return false}
+        if (validate.register(data)) {
+            console.log('')
+            try{return axiosClient.post('register', data)} catch(err) {return err.mesage}
+        } return false
+        
     },
 
     login(data) {
@@ -22,12 +25,12 @@ export const authAPI = {
             return false
         }
     },
-
     async getUser(id) {
         
     },
 
     async logout() {
         axiosClient.post('logout')
+
     }
 }
