@@ -9,6 +9,7 @@ import { LoggedInContext } from './context/LoggedInContext'
 import { axiosClient } from './apis/axiosClient'
 import Logout from './components/auth/Logout'
 import { AuthenticatedRoutes } from './utils/authGuard'
+import { UnAuthenticatedRoutes } from './utils/unAuthGuard'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -30,8 +31,10 @@ const App = () => {
                 <Route path='/logout' element={<Logout/>} exact/>
 
               </Route>
-            <Route path='/register' element={<Register></Register>}/>
-            <Route path='/login' element={<Login></Login>}/>
+            <Route element={<UnAuthenticatedRoutes/>}>
+              <Route path='/register' element={<Register></Register>}/>
+              <Route path='/login' element={<Login></Login>}/>
+            </Route>
             </Routes>
             </LoggedInContext.Provider>
             <Routes>
