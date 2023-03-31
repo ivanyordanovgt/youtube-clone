@@ -19,16 +19,23 @@ const Login = () => {
         'password': '',
     })
     const [count, setCount] = useState(false);
-    const {error, setError} = React.useState(false)
+    const [errors, setErrors] = useState({
+      'email': [],
+      'password': []
+    })
     const {setIsLoggedIn} = useContext(LoggedInContext);
+    const {formError, setFormError} = useState(false);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
         
-        authAPI.login(formValues).then(data => {
-          setIsLoggedIn(true)
-          console.log(data, '???')
-          navigate('/')
+        authAPI.login(formValues)
+        .then(data => navigate('/'))
+        .catch(res => {
+          setCount(true)
+          console.log(res)
+          const errorData = res.response.data;
+          setErrors({email: errorData.detail, password: errorData.detail})
         })
       
     }
@@ -73,6 +80,7 @@ const Login = () => {
             value={formValues.email}
             onChange={onChangeHandler}
             error={count}
+            helperText={errors.email}
           />
           <TextField
             margin="normal"
