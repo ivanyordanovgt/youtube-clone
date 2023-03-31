@@ -20,7 +20,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
     >
       <CardContent sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff'}}>
         <CardMedia image={channelDetail.thubmnail || demoProfilePicture}
-        alt={channelDetail?.snippet?.title} sx={
+        alt={channelDetail?.title} sx={
           {
           borderRadius: '50%', 
           height: '180px', 

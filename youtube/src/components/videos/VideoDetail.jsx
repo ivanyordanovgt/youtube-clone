@@ -17,7 +17,25 @@ const VideoDetail = () => {
     .then((data) => setVideoDetail(data.items[0]))
 
     fetchAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
-      (data) => setRelatedVideos(data.items)
+      (data) => {
+        console.log(data?.items)
+      const videos = [];
+      for (let video of data?.items) {
+        videos.push(
+          {
+            'id': video.id.videoId,
+            'channelId': video.snippet?.channelId,
+            'channelTitle': video.snippet?.channelTitle,
+            'description': video.snippet?.description,
+            'thumbnail': video?.snippet?.thumbnails.high  .url,
+            'title': video.snippet?.title,
+          }
+        )
+      }
+
+      console.log(videos, '!!!VIDS')
+      setRelatedVideos(videos)
+      }
     )
   }, [id])
 
