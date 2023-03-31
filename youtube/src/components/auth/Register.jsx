@@ -26,18 +26,14 @@ const Register = () => {
 
   const onSubmitHandler = (e) => {
       e.preventDefault();
-      setFormError(true)
+      
       const res = authAPI.register(formValues)
       .then(data => navigate('/login'))
       .catch(res => {
+        setFormError(true)
         const errorData = res.response.data;
         setErrors({email: errorData.email, password: errorData.password})
       })
-      if (res) {
-        res.then(d => {
-          // navigate('/login')
-        })
-      }
     }
     
   return (
