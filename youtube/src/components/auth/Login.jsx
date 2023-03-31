@@ -30,7 +30,10 @@ const Login = () => {
         e.preventDefault();
         
         authAPI.login(formValues)
-        .then(data => navigate('/'))
+        .then(data => {
+          setIsLoggedIn(true)
+          navigate('/')
+        })
         .catch(res => {
           setCount(true)
           console.log(res)
