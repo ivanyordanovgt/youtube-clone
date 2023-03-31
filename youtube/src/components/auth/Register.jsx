@@ -18,17 +18,24 @@ const Register = () => {
         'email': '',
         'password': '',
     })
-
+  const [errors, setErrors] = useState({
+    'email': [],
+    'password': []
+  })
   const [formError, setFormError] = useState(false);
 
   const onSubmitHandler = (e) => {
       e.preventDefault();
       setFormError(true)
       const res = authAPI.register(formValues)
-      console.log('res???', res)
+      .then(data => navigate('/login'))
+      .catch(res => {
+        const errorData = res.response.data;
+        setErrors({email: errorData.email, password: errorData.password})
+      })
       if (res) {
         res.then(d => {
-          navigate('/login')
+          // navigate('/login')
         })
       }
     }
@@ -73,6 +80,7 @@ const Register = () => {
             value={formValues.email}
             onChange={onChangeHandler}
             error={formError}
+            helperText={errors.email}
           />
           <TextField
             margin="normal"
@@ -85,7 +93,8 @@ const Register = () => {
             autoComplete="current-password"
             value={formValues.password}
             onChange={onChangeHandler}
-            error={formError  }
+            error={formError}
+            helperText={errors.password}
           />
 
           <TextField

@@ -12,7 +12,9 @@ export const axiosClient = {
             withCredentials: true,
           });
 
-          return response
+        
+        response.then(res => res.json()).catch(err => {return err.response.data});
+        return response
         },
     
     put(apiUrl, data) {
