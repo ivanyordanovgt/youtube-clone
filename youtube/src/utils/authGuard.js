@@ -7,6 +7,6 @@ import { LoggedInContext } from "../context/LoggedInContext";
 export const AuthenticatedRoutes = () => {
     const {isLoggedIn} = useContext(LoggedInContext)
     return (
-        isLoggedIn ? <Outlet/> : <Navigate to="/"></Navigate>
+        isLoggedIn ? <Outlet/> : <Navigate to="/register"></Navigate>
     )
 }
