@@ -19,7 +19,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
     to={`/channel/${channelDetail?.id?.channelId}`}
     >
       <CardContent sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff'}}>
-        <CardMedia image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+        <CardMedia image={channelDetail.thubmnail || demoProfilePicture}
         alt={channelDetail?.snippet?.title} sx={
           {
           borderRadius: '50%', 
@@ -28,11 +28,11 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
         />
 
         <Typography variant='h6'> 
-            {channelDetail?.snippet?.title}
+            {channelDetail.title}
             <CheckCircle sx={{fontSize: 15, color: 'gray', ml: '5px'}}></CheckCircle>
         </Typography>
-        {channelDetail?.statistics?.subscriberCount && (
-          <Typography> {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString()} Subscribers</Typography>
+        {channelDetail.subscribersCount && (
+          <Typography> {parseInt(channelDetail.subscribersCount).toLocaleString()} Subscribers</Typography>
         )}
       </CardContent>
     </Link>
