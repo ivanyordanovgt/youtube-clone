@@ -10,6 +10,7 @@ import { axiosClient } from './apis/axiosClient'
 import Logout from './components/auth/Logout'
 import { AuthenticatedRoutes } from './utils/authGuard'
 import { UnAuthenticatedRoutes } from './utils/unAuthGuard'
+import ProfileDetail from './components/user/Profile'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -28,7 +29,8 @@ const App = () => {
             <Navbar/>
             <Routes>
               <Route element={<AuthenticatedRoutes/>}>
-                <Route path='/logout' element={<Logout/>} exact/>
+              <Route path='/logout' element={<Logout/>} exact/>
+              <Route path='/user/profile' element={<ProfileDetail/>} exact/>
 
               </Route>
             <Route element={<UnAuthenticatedRoutes/>}>
