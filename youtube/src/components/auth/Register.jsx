@@ -17,10 +17,12 @@ const Register = () => {
   const {formValues, onChangeHandler} = useForm({
         'email': '',
         'password': '',
+        'profileUsername': '',
     })
   const [errors, setErrors] = useState({
     'email': [],
-    'password': []
+    'password': [],
+    'profileUsername': [],
   })
   const [formError, setFormError] = useState(false);
 
@@ -32,7 +34,7 @@ const Register = () => {
       .catch(res => {
         setFormError(true)
         const errorData = res.response.data;
-        setErrors({email: errorData.email, password: errorData.password})
+        setErrors({email: errorData.email, password: errorData.password, profileUsername: errorData.profileUsername})
       })
     }
     
@@ -77,6 +79,21 @@ const Register = () => {
             onChange={onChangeHandler}
             error={formError}
             helperText={errors.email}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="profileUsername"
+            label="profileUsername"
+            name="profileUsername"
+            autoComplete="profileUsername"
+            autoFocus
+            value={formValues.profileUsername}
+            onChange={onChangeHandler}
+            error={formError}
+            helperText={errors.profileUsername}
+            inputProps={{maxLength: 18}}
           />
           <TextField
             margin="normal"
