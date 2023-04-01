@@ -16,7 +16,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
     >
     
     <Link
-    to={`/channel/${channelDetail?.id?.channelId}`}
+    to={`/channel/${channelDetail?.channelId}`}
     >
       <CardContent sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff'}}>
         <CardMedia image={channelDetail.thubmnail || demoProfilePicture}

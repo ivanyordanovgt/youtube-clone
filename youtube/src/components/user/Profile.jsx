@@ -20,7 +20,14 @@ function ProfileDetail(pylaUser) {
 
   useEffect(() => {
     axiosClient.get('user').then(data => {
-        console.log(data, ':D')
+        console.log(data.data.data.profileUsername, ':D')
+        const profileData = data.data.data;
+        setChannelDetails((state) => ({...state, 
+              'thubmnail': profileData.thubmnail,
+              'title': profileData.profileUsername,
+              subscribersCount: 5,
+              
+            }))
     }) 
     // fetchAPI(`channels?part="snippet&id=${id}`)
     // .then((data) => {

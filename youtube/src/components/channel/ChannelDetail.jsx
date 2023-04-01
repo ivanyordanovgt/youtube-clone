@@ -39,7 +39,7 @@ function ChannelDetail(pylaUser) {
             'channelId': video.snippet?.channelId,
             'channelTitle': video.snippet?.channelTitle,
             'description': video.snippet?.description,
-            'thubmnail': video?.snippet?.thumbnails.high.url,
+            'thumbnail': video?.snippet?.thumbnails.high.url,
             'title': video.snippet?.title,
           }
         )
