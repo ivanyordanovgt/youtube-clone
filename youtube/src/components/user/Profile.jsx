@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import {Videos, ChannelCard} from '..'
 import { fetchAPI } from '../../utils/fetchAPI';
@@ -22,14 +22,15 @@ function ProfileDetail(pylaUser) {
     axiosClient.get('user').then(data => {
         console.log(data.data.data.profileUsername, ':D')
         const profileData = data.data.data;
-        setChannelDetails((state) => ({...state, 
-              'thubmnail': profileData.thubmnail,
+        console.log(profileData)
+        setChannelDetails(({ 
+              'thubmnail': profileData.profilePictureUrl,
               'title': profileData.profileUsername,
               subscribersCount: 5,
               
             }))
     }) 
-  }, [id, channelDetails])
+  }, [id])
   return (
     <Box minHeight="95vh">
       <button onClick={() => console.log(channelDetails)}>details</button>
@@ -40,7 +41,9 @@ function ProfileDetail(pylaUser) {
           zIndex: 10, height: '250px'}}></div>
         <ChannelCard channelDetail={channelDetails} marginTop='-93px'></ChannelCard>
         <Box sx={{marginLeft: '45.5vw'}}>
-          <Button sx={{mb: '2vh', width: '9vw'}}variant='outlined'>Edit Profile</Button>
+          <Link to={'edit'}>
+            <Button sx={{mb: '2vh', width: '9vw'}}variant='outlined'>Edit Profile</Button>
+          </Link>
           <br></br>
           <Button variant='outlined' sx={{width: '9vw'}}>Post a video</Button>
         </Box>

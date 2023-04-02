@@ -18,6 +18,13 @@ export const axiosClient = {
         },
     
     put(apiUrl, data) {
+      const response = axios({
+        method: 'put',
+        url: this.url + apiUrl,
+        withCredentials: true,
+        data: data,
+      })
+      return response
     },
   
     get(apiUrl) {

@@ -32,5 +32,9 @@ export const authAPI = {
     async logout() {
         axiosClient.post('logout')
 
+    },
+
+    async editProfile(data) {
+        axiosClient.put('user', data);
     }
 }

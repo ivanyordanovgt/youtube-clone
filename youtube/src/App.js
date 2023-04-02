@@ -11,6 +11,7 @@ import Logout from './components/auth/Logout'
 import { AuthenticatedRoutes } from './utils/authGuard'
 import { UnAuthenticatedRoutes } from './utils/unAuthGuard'
 import ProfileDetail from './components/user/Profile'
+import EditProfile from './components/user/EditProfile'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -31,6 +32,7 @@ const App = () => {
               <Route element={<AuthenticatedRoutes/>}>
               <Route path='/logout' element={<Logout/>} exact/>
               <Route path='/user/profile' element={<ProfileDetail/>} exact/>
+              <Route path='/user/profile/edit' element={<EditProfile/>} exact/>
 
               </Route>
             <Route element={<UnAuthenticatedRoutes/>}>
