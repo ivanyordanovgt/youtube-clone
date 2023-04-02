@@ -5,6 +5,8 @@ import { CheckCircle } from '@mui/icons-material'
 
 import {deboThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle} from '../../utils/contants'
 const VideoCard = ({ video }) => {
+  
+
   return (
     <Card sx={{width: {md: '300px', xs: '100%'}, boxShadow: 'none', borderRadius: 'none'}}>
       <Link to={video?.id ? `/video/${video.id}` : demoVideoUrl}>

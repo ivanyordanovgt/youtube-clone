@@ -14,8 +14,10 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { axiosClient } from '../../apis/axiosClient'
+import videoValidator from '../../validators/videoValidator'
 const PostVideo = () => {
-
+    const navigate = useNavigate();
     const [video, setVideo] = useState({})
     const {formValues, onChangeHandler} = useForm({
         'title': '',
@@ -24,33 +26,37 @@ const PostVideo = () => {
         'description': '',
         'channelTitle': "Your Video",
     })
+    const [helperText, setHelperText] = useState();
+    const [error, setError] = useState();
 
     
     const [preview, setPreview] = useState(false)
     
-    useEffect(() => {
-        setPreview(false)
-    }, [formValues])
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        const validate = videoValidator(formValues);
 
-    useEffect(() => {
-        setVideo({
-            'snippet': {
-                'title': 'custom title',
-                'channelId': 1,
-                'channelTitle': 1
-            },
-
-            'statistics': {
-                'viewCount': 100,
-                likeCount: 100
+        if (validate != true) {
+            alert(validate)
+            return
+        }
+        const data = {
+            'title': formValues.title,
+            'videoId': formValues.id,
+            'thumbnail': formValues.thumbnail,
+            'description': formValues.description,
+            'channelTitle': formValues.channelTitle
+        }
+        axiosClient.post('video', data).then(res => navigate('/')).catch(
+            (res) => {
+                console.log(res.response.data);
+                const errorKey = Object.keys(res.response.data)[0];
+                setError(true);
+                setHelperText(res.response.data[errorKey]);
             }
-        })
-    }, [])
+        )
+      }
 
-    function onSubmitHandler(ev) {
-        ev.preventDefault();
-        setPreview(state => !state)
-    }
 
   return (
     <div style={{backgroundColor: 'white', marginTop: '20vh'}}>
@@ -98,6 +104,8 @@ const PostVideo = () => {
             id="videoId"
             value={formValues.id}
             onChange={onChangeHandler}
+            helperText={helperText}
+            error={error}
           />
 
         <TextField
@@ -125,6 +133,7 @@ const PostVideo = () => {
             type="submit"
             fullWidth
             variant="contained"
+            onClick={onSubmitHandler}
             sx={{ mt: 3, mb: 2 }}
           >
             Post
