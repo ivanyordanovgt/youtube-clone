@@ -7,7 +7,7 @@ import { CheckCircle } from '@mui/icons-material'
 import {Videos} from '..'
 import { fetchAPI } from '../../utils/fetchAPI'
 import './Videos'
-const VideoDetail = () => {
+const VideoDetail = ({nonYoutube, video}) => {
 
   const {id} = useParams();
   const [videoDetail, setVideoDetail] = useState(null)
@@ -15,29 +15,33 @@ const VideoDetail = () => {
   useEffect(() => {
     fetchAPI(`videos?part=snippet,statistics&id=${id}`)
     .then((data) => setVideoDetail(data.items[0]))
-
-    fetchAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
-      (data) => {
-        console.log(data?.items)
-      const videos = [];
-      for (let video of data?.items) {
-        videos.push(
-          {
-            'id': video.id.videoId,
-            'channelId': video.snippet?.channelId,
-            'channelTitle': video.snippet?.channelTitle,
-            'description': video.snippet?.description,
-            'thumbnail': video?.snippet?.thumbnails.high  .url,
-            'title': video.snippet?.title,
-          }
-        )
-      }
-
-      console.log(videos, '!!!VIDS')
-      setRelatedVideos(videos)
-      }
-    )
-  }, [id])
+    if (!nonYoutube) {
+      fetchAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
+        (data) => {
+          console.log(data?.items)
+        const videos = [];
+        for (let video of data?.items) {
+          videos.push(
+            {
+              'id': video.id.videoId,
+              'channelId': video.snippet?.channelId,
+              'channelTitle': video.snippet?.channelTitle,
+              'description': video.snippet?.description,
+              'thumbnail': video?.snippet?.thumbnails.high  .url,
+              'title': video.snippet?.title,
+            }
+          )
+        }
+  
+        console.log(videos, '!!!VIDS')
+        setRelatedVideos(videos)
+        }
+      )
+    } else {
+      setVideoDetail(video);
+    }
+    
+  }, [id, videoDetail])
 
   if (!videoDetail?.snippet) return <h1>Loading</h1>
   const {snippet: {title, channelId, channelTitle}, statistics: {viewCount, likeCount}} = videoDetail
@@ -68,7 +72,7 @@ const VideoDetail = () => {
           </Box>
         </Box>
         <Box px={2} py={{md: 1, xs: 5}} justifyContent="center" alignItems="center">
-        <Videos videos={relatedVideos} direction="column"/>
+        {nonYoutube ? '': <Videos videos={relatedVideos} direction="column"/>}
 
       </Box>
       </Stack>

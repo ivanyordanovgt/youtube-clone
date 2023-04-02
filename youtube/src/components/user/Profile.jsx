@@ -45,7 +45,9 @@ function ProfileDetail(pylaUser) {
             <Button sx={{mb: '2vh', width: '9vw'}}variant='outlined'>Edit Profile</Button>
           </Link>
           <br></br>
-          <Button variant='outlined' sx={{width: '9vw'}}>Post a video</Button>
+          <Link to={'/user/video/post'}>
+            <Button variant='outlined' sx={{width: '9vw'}}>Post a video</Button>
+          </Link>
         </Box>
         </Box>
 
