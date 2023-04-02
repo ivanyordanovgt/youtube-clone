@@ -30,6 +30,10 @@ function ProfileDetail(pylaUser) {
               
             }))
     }) 
+
+    axiosClient.get('video').then(data => {
+      setVideos(data.data.data)
+    })
   }, [id])
   return (
     <Box minHeight="95vh">
@@ -50,12 +54,10 @@ function ProfileDetail(pylaUser) {
           </Link>
         </Box>
         </Box>
+      <div style={{'marginLeft': '5vw', 'marginTop': '5vh'}}>
+        <Videos style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} videos={videos}></Videos>
 
-      <Box display="flex" p="2">
-        <Box sx={{mr: {sm: '100px'}}}/>
-        <Videos videos={videos}></Videos>
-
-      </Box>
+      </div>
 
     </Box>
     

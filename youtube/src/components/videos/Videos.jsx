@@ -9,16 +9,10 @@ const Videos = ({ videos, direction }) => {
   return (
     <Stack direction={direction || "row"} flexWrap="wrap" justifyContent="start" alignItems="start" gap={2}>
       {videos?.map((item, idx) => {
-        const channelIds = [];
-        let addChannelCard = false;
-        if (!channelIds.includes(item.channelId)) {
-          console.log(channelIds.includes(item.channelId))
-          channelIds.push(item.channelId)
-          console.log("SHOW ITTTT")
-          addChannelCard = true;
-        }
+        console.log(item)
         return <Box key={idx}>
-          {item.id && <VideoCard video={item} /> }
+          {item.id ? <VideoCard video={item} />: '' }
+          {item.videoId ? <VideoCard video={item} />: '' }
           {/* {addChannelCard ? <ChannelCard channelDetail={item} />: "?"} */}
         </Box>
 })}
