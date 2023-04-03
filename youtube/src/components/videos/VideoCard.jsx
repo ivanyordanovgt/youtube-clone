@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Typography, Card, CardContent, CardMedia } from '@mui/material'
+import { Typography, Card, CardContent, CardMedia, Button } from '@mui/material'
 import { CheckCircle } from '@mui/icons-material'
 
 import {deboThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle} from '../../utils/contants'
@@ -27,6 +27,8 @@ const VideoCard = ({ video }) => {
       <Typography sx={{color: 'gray'}}>
         {video?.description?.slice(0, 90)} {video.description?.length > 90 ? '...': ' '}
       </Typography>
+
+      {video?.videoId ? <Button variant='outlined'>EDIT</Button> : ''}
       </CardContent>
     </Card>
   )

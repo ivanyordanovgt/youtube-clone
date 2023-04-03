@@ -13,6 +13,7 @@ import { UnAuthenticatedRoutes } from './utils/unAuthGuard'
 import ProfileDetail from './components/user/Profile'
 import EditProfile from './components/user/EditProfile'
 import PostVideo from './components/user/PostVideo'
+import PageNotFound from './components/pageNotFound'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -48,6 +49,7 @@ const App = () => {
             <Route path='/video/:id' element={<VideoDetail/>}/>
             <Route path='/channel/:id' element={<ChannelDetail/>}/>
             <Route path='/search/:searchParam' element={<SearchFeed/>}/>
+            <Route path='*' element={<PageNotFound/>}/>
 
             </Routes>
         </Box>
