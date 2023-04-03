@@ -14,9 +14,10 @@ import ProfileDetail from './components/user/Profile'
 import EditProfile from './components/user/EditProfile'
 import PostVideo from './components/user/PostVideo'
 import PageNotFound from './components/pageNotFound'
+import EditVideo from './components/user/EditVideo'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
   useEffect(() => {
       // axiosClient.get('user').then((data) => console.log(data.data.data.id));
       console.log(authAPI.isLoggedIn().then((res) => {
@@ -37,6 +38,7 @@ const App = () => {
                 <Route path='/user/profile' element={<ProfileDetail/>} exact/>
                 <Route path='/user/profile/edit' element={<EditProfile/>} exact/>
                 <Route path='/user/video/post' element={<PostVideo/>} exact/>
+                <Route path='/video/edit/:videoId' element={<EditVideo/>} exact/>
 
                 </Route>
               <Route element={<UnAuthenticatedRoutes/>}>
