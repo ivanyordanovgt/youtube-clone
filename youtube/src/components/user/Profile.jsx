@@ -19,7 +19,8 @@ function ProfileDetail({serverSideProfile}) {
   })
 
   useEffect(() => {
-    axiosClient.get('user').then(data => {
+    if (!serverSideProfile) {
+      axiosClient.get('user').then(data => {
         console.log(data.data.data.profileUsername, ':D')
         const profileData = data.data.data;
         console.log(profileData)
@@ -29,11 +30,14 @@ function ProfileDetail({serverSideProfile}) {
               subscribersCount: 5,
               
             }))
-    }) 
-
-    axiosClient.get('video').then(data => {
-      setVideos(data.data.data)
+          axiosClient.get('video').then(data => {
+            setVideos(data.data.data)
+          })
     })
+    }
+     
+
+    
   }, [id])
   return (
     <Box height="155vh">
