@@ -12,7 +12,7 @@ const ServerSideVideos = () => {
     useEffect(() => {
         axiosClient.post('video', {
             getAll: true
-        }).then(data => setVideos(data.data.data))
+        }).then(data => {setVideos(data.data.data)})
     })
   return (
     <Stack sx={{flexDirection: {sx: "column", md: "row"}}}>
