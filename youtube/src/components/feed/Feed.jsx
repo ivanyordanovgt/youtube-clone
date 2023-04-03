@@ -3,32 +3,42 @@ import { useState, useEffect } from 'react'
 import {Box, Stack, Typography} from "@mui/material"
 import {SideBar, Videos} from '..'
 import { fetchAPI } from '../../utils/fetchAPI'
-function Feed() {
+import { axiosClient } from '../../apis/axiosClient'
+function Feed({customYoutube}) {
   
   const [selectedCategory, setSelectedCategory] = useState('New'); 
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
-    fetchAPI(`search?part=snippet&q=${selectedCategory}`)
-    .then((data) => {
-      console.log(data?.items)
-      const videos = [];
-      for (let video of data?.items) {
-        videos.push(
-          {
-            'id': video.id.videoId,
-            'channelId': video.snippet?.channelId,
-            'channelTitle': video.snippet?.channelTitle,
-            'description': video.snippet?.description,
-            'thumbnail': video?.snippet?.thumbnails.high  .url,
-            'title': video.snippet?.title,
-          }
-        )
-      }
+    console.log(customYoutube, '!!!!!!!!!!!')
+    if (!customYoutube) {
+      fetchAPI(`search?part=snippet&q=${selectedCategory}`)
+      .then((data) => {
+        console.log(data?.items)
+        const videos = [];
+        for (let video of data?.items) {
+          videos.push(
+            {
+              'id': video.id.videoId,
+              'channelId': video.snippet?.channelId,
+              'channelTitle': video.snippet?.channelTitle,
+              'description': video.snippet?.description,
+              'thumbnail': video?.snippet?.thumbnails.high  .url,
+              'title': video.snippet?.title,
+            }
+          )
+        }
 
-      console.log(videos, '!!!VIDS')
-      setVideos(videos)
-    })
+        console.log(videos, '!!!VIDS')
+        setVideos(videos)
+        return
+      })
+    }
+
+    axiosClient.post('video', {
+      'getAll': true
+    }).then(data => console.log(data)).catch()
+    
   }, [selectedCategory])
 
   

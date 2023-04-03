@@ -15,8 +15,10 @@ import EditProfile from './components/user/EditProfile'
 import PostVideo from './components/user/PostVideo'
 import PageNotFound from './components/pageNotFound'
 import EditVideo from './components/user/EditVideo'
+import ServerSideVideos from './components/videos/serverSideVideos'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [appSideVideosBoolean, setAppSideVideosBoolean] = useState(false);
   
   useEffect(() => {
       // axiosClient.get('user').then((data) => console.log(data.data.data.id));
@@ -30,7 +32,7 @@ const App = () => {
     <BrowserRouter>
         <Box sx={{backgroundColor: '#000'}}>
             <LoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}> 
-            <Navbar/>
+            <Navbar appSideVideosBooleanSetter={setAppSideVideosBoolean}/>
               <Routes>
                 
                 <Route element={<AuthenticatedRoutes/>}>
@@ -45,7 +47,8 @@ const App = () => {
                 <Route path='/register' element={<Register></Register>}/>
                 <Route path='/login' element={<Login></Login>}/>
               </Route>
-                 <Route path='/' exact element={<Feed/>}/>
+              <Route path='/' exact element={<Feed />}/>
+              <Route path='/videos' exact element={<ServerSideVideos />}/>
               <Route path='/video/:id' element={<VideoDetail/>}/>
               <Route path='/channel/:id' element={<ChannelDetail/>}/>
               <Route path='/search/:searchParam' element={<SearchFeed/>}/>
