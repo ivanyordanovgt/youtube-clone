@@ -30,28 +30,31 @@ const App = () => {
         <Box sx={{backgroundColor: '#000'}}>
             <LoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}> 
             <Navbar/>
-            <Routes>
-              <Route element={<AuthenticatedRoutes/>}>
-              <Route path='/logout' element={<Logout/>} exact/>
-              <Route path='/user/profile' element={<ProfileDetail/>} exact/>
-              <Route path='/user/profile/edit' element={<EditProfile/>} exact/>
-              <Route path='/user/video/post' element={<PostVideo/>} exact/>
+              <Routes>
+                
+                <Route element={<AuthenticatedRoutes/>}>
+                <Route path='/logout' element={<Logout/>} exact/>
+                <Route path='/user/profile' element={<ProfileDetail/>} exact/>
+                <Route path='/user/profile/edit' element={<EditProfile/>} exact/>
+                <Route path='/user/video/post' element={<PostVideo/>} exact/>
 
+                </Route>
+              <Route element={<UnAuthenticatedRoutes/>}>
+                <Route path='/register' element={<Register></Register>}/>
+                <Route path='/login' element={<Login></Login>}/>
               </Route>
-            <Route element={<UnAuthenticatedRoutes/>}>
-              <Route path='/register' element={<Register></Register>}/>
-              <Route path='/login' element={<Login></Login>}/>
-            </Route>
-            </Routes>
-            </LoggedInContext.Provider>
-            <Routes>
-            <Route path='/' exact element={<Feed/>}/>
-            <Route path='/video/:id' element={<VideoDetail/>}/>
-            <Route path='/channel/:id' element={<ChannelDetail/>}/>
-            <Route path='/search/:searchParam' element={<SearchFeed/>}/>
-            <Route path='*' element={<PageNotFound/>}/>
+                 <Route path='/' exact element={<Feed/>}/>
+              <Route path='/video/:id' element={<VideoDetail/>}/>
+              <Route path='/channel/:id' element={<ChannelDetail/>}/>
+              <Route path='/search/:searchParam' element={<SearchFeed/>}/>
+              <Route path='*' element={<PageNotFound/>}/>
+              </Routes>
+              </LoggedInContext.Provider>
+              <Routes>
+           
 
-            </Routes>
+              </Routes>
+              
         </Box>
     </BrowserRouter>
   )

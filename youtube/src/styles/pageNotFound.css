@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Fira+Mono:wght@500&display=swap');
-body{
-    height: 95vh;
+.body{
+    height: 110vh;
     background: #000000;
     text-align: center;
     color: #E0E0E0;
     font-family: 'Fira Mono', monospace;
 }
-h1{
+.body h1{
     font-size: 2.5rem;
     font-family: 'Permanent Marker', cursive;
 }
-div{
+.body div{
     transform-style: preserve-3d;
 }
-svg{
+.body svg{
     width: clamp(300px , 70% , 600px);
     height: 500px;
   
@@ -59,7 +59,7 @@ svg{
         opacity: 1;
     }
 }
-a{
+.body a{
     color:#F66947;
     text-decoration: none;
 }

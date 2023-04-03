@@ -3,7 +3,7 @@ import '../styles/pageNotFound.css'
 const PageNotFound = () => {
   return (
     <div>
-        <body>
+        <div class="body">
     <div>
         <svg width="1123" height="837" viewBox="0 0 1123 837" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="1123" height="837" fill="black"/>
@@ -96,11 +96,10 @@ const PageNotFound = () => {
     </div>
     <div class="text">
         <h1>404 Error</h1>  
-         <h3>Page Not Found</h3>
-         <h3>If you believe this is a mistake contact our moderators!</h3>
-         <h3>Sorry for the inconvenience</h3> 
+         <h3>Page Not Found - lets take you <a href="https://twitter.com/namratapdr">BACK</a></h3>
+         <h3>If you believe this is a mistake contact our moderators!</h3> 
     </div>
-</body>
+</div>
 
     </div>
   )
