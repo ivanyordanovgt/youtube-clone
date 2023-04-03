@@ -5,7 +5,7 @@ import {Videos, ChannelCard} from '..'
 import { fetchAPI } from '../../utils/fetchAPI';
 import { axiosClient } from '../../apis/axiosClient';
 
-function ProfileDetail(pylaUser) {
+function ProfileDetail({serverSideProfile}) {
   const [channelDetail, setChannelDetail] = useState(null)
   const [videos, setVideos] = useState([])
   const {id} = useParams();
