@@ -17,7 +17,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { axiosClient } from '../../apis/axiosClient'
 import videoValidator from '../../validators/videoValidator'
+
 const EditVideo = () => {
+  const navigate = useNavigate();
   const {videoId} = useParams();
   const [userId, setUserId] = useState();
   const {formValues, onChangeHandler, setFormValues} = useForm({
@@ -35,13 +37,21 @@ const EditVideo = () => {
 
   useEffect(() => {
     axiosClient.post('video', {videoId: videoId}).then(data => setFormValues(data.data.data))
-  }, []) 
+  }, [])
+  
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    axiosClient.put('video', formValues).then(data => navigate('/user/profile')).catch(err => console.log(err))
+    console.log('submit')
+  }
+
   return (
     <div style={{backgroundColor: 'white', marginTop: '20vh'}}>
     <div style={{height: '.1vh'}}></div>
     <Container component="main" maxWidth="xs">
       <h1>{userId}</h1>
       <Box
+        component="form"
         sx={{  
           marginTop: 8,
           display: "flex",
@@ -50,7 +60,7 @@ const EditVideo = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Edit video {videoId}
+          Edit video <span style={{fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif", fontSize: '2vw'}}>{formValues.title}</span>
         </Typography>
         <Box component="form"  noValidate sx={{ mt: 1 }}>
 
@@ -87,12 +97,12 @@ const EditVideo = () => {
           />
 
           <Button
-            type="submit"
+            onClick={onSubmitHandler}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Post
+            Edit
           </Button>
           
         </Box>

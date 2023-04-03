@@ -33,9 +33,10 @@ const VideoCard = ({ video }) => {
       </Link>
       <Typography sx={{color: 'gray'}}>
         {video?.description?.slice(0, 90)} {video.description?.length > 90 ? '...': ' '}
+        {video?.user===userId ? <Link to={`/video/edit/${video.videoId}`}><Button variant='outlined'>EDIT</Button></Link> : ''}
+
       </Typography>
 
-      {video?.user===userId ? <Link to={`/video/edit/${video.videoId}`}><Button variant='outlined'>EDIT</Button></Link> : ''}
       
       </CardContent>
     </Card>
