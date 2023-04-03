@@ -49,7 +49,6 @@ const EditVideo = () => {
     <div style={{backgroundColor: 'white', marginTop: '20vh'}}>
     <div style={{height: '.1vh'}}></div>
     <Container component="main" maxWidth="xs">
-      <h1>{userId}</h1>
       <Box
         component="form"
         sx={{  
