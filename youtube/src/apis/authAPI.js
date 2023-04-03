@@ -26,7 +26,8 @@ export const authAPI = {
         }
     },
     async getUser(id) {
-        
+        const res = await axiosClient.get('user')
+        return res
     },
 
     async logout() {

@@ -2,10 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Typography, Card, CardContent, CardMedia, Button } from '@mui/material'
 import { CheckCircle } from '@mui/icons-material'
-
+import { useState } from 'react'
 import {deboThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle} from '../../utils/contants'
+import { useEffect } from 'react'
+import { authAPI } from '../../apis/authAPI'
 const VideoCard = ({ video }) => {
-  
+  const [userId, setUserId] = useState()
+  useEffect(() => {
+    authAPI.getUser().then(data => {
+      setUserId(data.data.data.id)
+    }).catch(err => console.log(err))
+  }, [userId])
 
   return (
     <Card sx={{width: {md: '300px', xs: '100%'}, boxShadow: 'none', borderRadius: 'none'}}>
@@ -28,7 +35,8 @@ const VideoCard = ({ video }) => {
         {video?.description?.slice(0, 90)} {video.description?.length > 90 ? '...': ' '}
       </Typography>
 
-      {video?.videoId ? <Button variant='outlined'>EDIT</Button> : ''}
+      {video?.user===userId ? <Button variant='outlined'>EDIT</Button> : ''}
+      
       </CardContent>
     </Card>
   )
