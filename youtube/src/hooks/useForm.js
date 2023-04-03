@@ -8,5 +8,5 @@ export const useForm = (intialValues) => {
     };
 
 
-    return {formValues, onChangeHandler};
+    return {formValues, onChangeHandler, setFormValues};
 }
