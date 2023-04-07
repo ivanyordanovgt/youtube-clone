@@ -16,6 +16,7 @@ import PostVideo from './components/user/PostVideo'
 import PageNotFound from './components/pageNotFound'
 import EditVideo from './components/user/EditVideo'
 import ServerSideVideos from './components/videos/serverSideVideos'
+import ViewUserProfile from './components/user/ViewUserProfile'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [appSideVideosBoolean, setAppSideVideosBoolean] = useState(false);
@@ -41,6 +42,7 @@ const App = () => {
                 <Route path='/user/profile/edit' element={<EditProfile/>} exact/>
                 <Route path='/user/video/post' element={<PostVideo/>} exact/>
                 <Route path='/video/edit/:videoId' element={<EditVideo/>} exact/>
+                <Route path='/user/view/:id' element={<ViewUserProfile/>} exact/>
 
                 </Route>
               <Route element={<UnAuthenticatedRoutes/>}>

@@ -19,8 +19,9 @@ function ProfileDetail({serverSideProfile}) {
   })
 
   useEffect(() => {
+    console.log(!serverSideProfile, '!!!!!!!!!!!')
     if (!serverSideProfile) {
-      axiosClient.get('user').then(data => {
+        axiosClient.get('user').then(data => {
         console.log(data.data.data.profileUsername, ':D')
         const profileData = data.data.data;
         console.log(profileData)
@@ -33,29 +34,43 @@ function ProfileDetail({serverSideProfile}) {
           axiosClient.get('video').then(data => {
             setVideos(data.data.data)
           })
-    })
-    }
-     
+        })
+      return
+      }
+
+    axiosClient.post('user', {'id': id})
+    .then(data => {
+      const profileData = data.data.data
+      setChannelDetails(({ 
+        'thubmnail': profileData.profilePictureUrl,
+        'title': profileData.profileUsername,
+        subscribersCount: 5,
+        
+      }))})
+    
+    axiosClient.post('video', {'userId': id}).then(
+      data => setVideos(data.data.data)
+    )
+    
 
     
-  }, [id])
+  }, [])
   return (
     <Box height="155vh">
-      <button onClick={() => console.log(channelDetails)}>details</button>
-
       <Box>
         <div style={{
           background: 'linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(180,58,179,1) 49%, rgba(85,25,25,1) 100%)', 
           zIndex: 10, height: '250px'}}></div>
         <ChannelCard channelDetail={channelDetails} marginTop='-93px'></ChannelCard>
         <Box sx={{marginLeft: '45.5vw'}}>
-          <Link to={'edit'}>
+          {!serverSideProfile ? <div><Link to={'edit'}>
             <Button sx={{mb: '2vh', width: '9vw'}}variant='outlined'>Edit Profile</Button>
           </Link>
           <br></br>
           <Link to={'/user/video/post'}>
             <Button variant='outlined' sx={{width: '9vw'}}>Post a video</Button>
           </Link>
+          </div>: ''}
         </Box>
         </Box>
       <div style={{'marginLeft': '5vw', 'marginTop': '5vh'}}>

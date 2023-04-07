@@ -29,7 +29,7 @@ const EditProfile = () => {
       e.preventDefault();
       
       const res = authAPI.editProfile(formValues)
-      .then(data => {navigate('/profile')})
+      .then(data => {navigate('/user/profile')})
       .catch(res => {
         setFormError(true)
         const errorData = res.response.data;
