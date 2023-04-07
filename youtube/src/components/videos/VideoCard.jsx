@@ -35,7 +35,7 @@ const VideoCard = ({ video }) => {
         {video?.description?.slice(0, 90)} {video.description?.length > 90 ? '...': ' '}
         {video?.user===userId ? <Link to={`/video/edit/${video.videoId}`}><Button variant='outlined'>EDIT</Button></Link> : ''}
         <br></br>
-        <Link to={`/user/view/${video?.user}`}><span style={{color: 'indianred'}}>View publisher</span></Link>
+        {video?.user ? <Link to={`/user/view/${video?.user}`}><span style={{color: 'indianred'}}>View publisher</span></Link>: ''}
       </Typography>
 
       
