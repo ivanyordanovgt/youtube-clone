@@ -50,7 +50,6 @@ function ChannelDetail(pylaUser) {
   }, [id, channelDetails])
   return (
     <Box minHeight="95vh">
-      <button onClick={() => console.log(channelDetails)}>details</button>
 
       <Box>
         <div style={{
